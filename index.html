@@ -1,0 +1,57 @@
+
+<!doctype html>
+<head>
+	<title>He's Gone</title>
+	<script src="./music.js"></script>
+	<style>
+		html,body,div,img{margin:0; padding:0;}
+		
+		.circle{ width:200px; height:200px; background:;
+			position: absolute; left:calc(50% - 100px); top:200px;
+			animation: Moving 8s linear infinite;
+					}
+		@keyframes Moving{
+			0%{ }
+			100%{ transform: rotate(-360deg)}
+		}
+		.circle img{width:100%; height:auto;}
+
+		body {background-image: url(2.gif); background-repeat: no-repeat; size: cover;}
+	</style>
+</head>
+<body>
+	
+	
+
+	<button id="play1">Replay</button>
+
+	
+	
+	<div class="circle" id="circle">
+		<img src="he.png" id="cImg">
+	</div>
+
+	<script>
+		var newSound = new music("fpt.mp3",16);
+	
+		(function loop(){ 
+ 
+			var vol = newSound.getGain() / 10; 
+			circle.style.width = vol + "px";
+			circle.style.height = vol + "px";
+			circle.style.borderRadius = vol/2 + "px";
+			circle.style.left = "calc(50% - " + (vol/2) + "px)";
+			circle.style.top = 300 - (vol/2) + "px";
+
+			window.requestAnimationFrame(loop);	
+		})();
+
+
+		
+		play1.onclick = function(){
+			cImg.setAttribute("src","he.png");
+			newSound.change("fpt.mp3");
+		};	
+
+	</script>
+</body>
